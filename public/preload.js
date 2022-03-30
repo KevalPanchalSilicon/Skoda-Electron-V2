@@ -1,3 +1,5 @@
+const { dialog } = require('electron');
+
 window.ipcRenderer = require('electron').ipcRenderer;
 
 window.ipcRenderer.on('SET_SOURCE', async (event, sourceId) => {
@@ -31,3 +33,15 @@ function handleStream (stream) {
 function handleError (e) {
    console.log(e)
 }
+
+window.ipcRenderer.on('message', function(event, text) {
+    const dialogOpts = {
+        type: 'info',
+        buttons: ['Restart', 'Later'],
+        title: 'Application Update',
+        message: text,
+        detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+      }
+    
+      dialog.showMessageBox(dialogOpts)
+})
