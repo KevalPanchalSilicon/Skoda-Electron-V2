@@ -18,6 +18,8 @@ jobs:
         node-version: 14.17
     - name: install dependencies
       run: npm install
+    - name: install build
+      run: npm run preelectron-build
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -32,6 +34,8 @@ jobs:
         node-version: 14.17
     - name: install dependencies
       run: npm install
+    - name: install build
+      run: npm run preelectron-build
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -46,6 +50,8 @@ jobs:
         node-version: 14.17
     - name: install dependencies
       run: npm install
+    - name: install build
+      run: npm run preelectron-build
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
