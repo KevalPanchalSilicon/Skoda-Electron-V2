@@ -15,7 +15,8 @@
 			{
 				"provider": "github",
 				"owner": "KevalPanchalSilicon",
-				"repo": "Skoda-Electron"
+				"repo": "Skoda-Electron",
+				"token": "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"
 			}
 		],
 		"mac": {
