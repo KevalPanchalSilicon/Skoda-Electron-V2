@@ -102,7 +102,7 @@
 		"eject": "react-scripts eject",
 		"electron-dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
 		"electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
-		"electron-production": "electron-builder --win --mac --linux -p always",
+		"electron-production": "GH_TOKEN=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 electron-builder --win --mac --linux -p always",
 		"preelectron-pack": "react-scripts build"
 	},
 	"eslintConfig": {
