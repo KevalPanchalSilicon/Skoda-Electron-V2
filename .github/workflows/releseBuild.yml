@@ -28,11 +28,6 @@ jobs:
         node-version: 14.17
     - name: Install Packages
       run: npm install
-      
-    - name: Set Token
-      uses: actions/labeler@v2  
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build Static Files
       run: CI=false npm run electron-pack
