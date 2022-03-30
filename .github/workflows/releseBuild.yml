@@ -21,7 +21,7 @@ jobs:
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
-      run: npm run electron-pack
+      run: npm run electron-linux
 
   build_on_mac:
     runs-on: macos-latest
@@ -35,7 +35,7 @@ jobs:
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
-      run: npm run electron-pack
+      run: npm run electron-mac
       
   build_on_win:
     runs-on: windows-latest
@@ -49,4 +49,4 @@ jobs:
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
-      run: npm run electron-pack
+      run: npm run electron-win
