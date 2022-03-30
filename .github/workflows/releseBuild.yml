@@ -6,38 +6,45 @@ on:
   push:
     branches:
       - 'main'
-      
-
 jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-18.04
-
+  build_on_linux:
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Copy Enviornment Files
-      id: copy-env
-      run: |
-        mv .env.development .env.production
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@master
       with:
         node-version: 14.17
-    - name: Install Packages
+    - name: install dependencies
       run: npm install
-      
-    - name: Set Token
-      uses: actions/labeler@v2  
-      with:
-        repo-token: ${{ secrets.GH_TOKEN }}
+    - name: publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npm run electron-pack
 
-    - name: Build Static Files
-      run: CI=false npm run electron-production
-      
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
+  build_on_mac:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@master
       with:
-        publish_dir: ./dist
+        node-version: 14.17
+    - name: install dependencies
+      run: npm install
+    - name: publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npm run electron-pack
+      
+  build_on_win:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@master
+      with:
+        node-version: 14.17
+    - name: install dependencies
+      run: npm install
+    - name: publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run electron-pack
