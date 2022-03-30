@@ -19,7 +19,7 @@ jobs:
     - name: install dependencies
       run: npm install
     - name: install build
-      run: npm run preelectron-build
+      run: npm run preelectron-pack
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -35,7 +35,7 @@ jobs:
     - name: install dependencies
       run: npm install
     - name: install build
-      run: npm run preelectron-build
+      run: npm run preelectron-pack
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -51,7 +51,7 @@ jobs:
     - name: install dependencies
       run: npm install
     - name: install build
-      run: npm run preelectron-build
+      run: npm run preelectron-pack
     - name: publish
       env:
           GITHUB_TOKEN: ${{ github.token }}
